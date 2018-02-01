@@ -29,6 +29,14 @@ func NewVerifier() *Verifier {
 // VerifyIDToken verifies the google ID token.
 // See also https://developers.google.com/identity/sign-in/web/backend-auth
 func (v *Verifier) VerifyIDToken(ctx context.Context, jwt string, audience string) error {
+	certs, err := v.getOrFetchCerts(ctx)
+	if err != nil {
+		return err
+	}
+	return v.verifyIDToken(jwt, audience, certs)
+}
+
+func (v *Verifier) verifyIDToken(jwt string, audience string, certs *certs) error {
 	header, payload, signature, checksum, err := v.splitToken(jwt)
 	if err != nil {
 		return err
@@ -38,12 +46,6 @@ func (v *Verifier) VerifyIDToken(ctx context.Context, jwt string, audience strin
 	if err != nil {
 		return err
 	}
-
-	certs, err := v.getOrFetchCerts(ctx)
-	if err != nil {
-		return err
-	}
-
 	err = v.checkSignature(certs, header, signature, checksum)
 	if err != nil {
 		return err

@@ -10,6 +10,9 @@ LDFLAGS       ?= -w -s
 
 default: build.local
 
+test:
+	go test -v -race `go list ./...`
+
 fmt:
 	go fmt $(GOPKGS)
 
