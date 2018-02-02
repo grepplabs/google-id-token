@@ -37,6 +37,10 @@ func (v *Verifier) VerifyIDToken(ctx context.Context, jwt string, audience strin
 }
 
 func (v *Verifier) verifyIDToken(jwt string, audience string, certs *certs) error {
+	if jwt == "" {
+		return errors.New("token is empty")
+	}
+
 	header, payload, signature, checksum, err := v.splitToken(jwt)
 	if err != nil {
 		return err
