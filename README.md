@@ -9,6 +9,30 @@ A small application to retrieve or verify google ID token
 
 - gcloud Command-Line Tool to retrieve Application Default Credentials - [Installing Cloud SDK](https://cloud.google.com/sdk/downloads)
 
+### Install binary release
+
+1. Download the latest release
+
+   Linux
+
+        curl -Lso google-id-token https://github.com/grepplabs/google-id-token/releases/download/v0.0.1/linux.amd64.google-id-token 
+
+   macOS
+
+        curl -Lso google-id-token https://github.com/grepplabs/google-id-token/releases/download/v0.0.1/darwin.amd64.google-id-token 
+
+2. Make the google-id-token binary executable
+
+    ```
+    chmod +x ./google-id-token
+    ```
+
+3. Move the binary in to your PATH.
+
+    ```
+    sudo mv ./google-id-token /usr/local/bin/google-id-token
+    ```
+
 ### Building
 
 	go build
