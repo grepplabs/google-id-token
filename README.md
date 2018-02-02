@@ -4,6 +4,11 @@ A small application to retrieve or verify google ID token
 
 [![Build Status](https://travis-ci.org/grepplabs/google-id-token.svg?branch=master)](https://travis-ci.org/grepplabs/google-id-token)
 
+
+### Requirements
+
+- gcloud Command-Line Tool to retrieve Application Default Credentials - [Installing Cloud SDK](https://cloud.google.com/sdk/downloads)
+
 ### Building
 
 	go build
@@ -29,7 +34,7 @@ A small application to retrieve or verify google ID token
       -t, --timeout int        Timeout in seconds (default 5)
 
 
-### Acquire new user credentials and oogle ID token
+### Acquire new user credentials and google ID token
 [Application Default Credentials](https://cloud.google.com/sdk/gcloud/reference/auth/application-default/login)
 
     gcloud auth application-default login
